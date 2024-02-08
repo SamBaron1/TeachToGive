@@ -1,0 +1,119 @@
+//Question 1: FizzBuzz Write a program that prints the numbers from 1 to 100. For multiples of 3, print "Fizz"; 
+//for multiples of 5,print "Buzz"; and for numbers that are multiples of both 3 and 5, print "FizzBuzz". 
+<?php
+for ($i = 1; $i <= 100; $i++) {
+    if ($i % 3 === 0 && $i % 5 === 0) {
+        echo "FizzBuzz";
+    } elseif ($i % 3 === 0) {
+        echo "Fizz";
+    } elseif ($i % 5 === 0) {
+        echo "Buzz";
+    } else {
+        echo $i;
+    }
+    echo "\n";
+}
+?>
+//Question 2: Fibonacci Sequence Write a program to generate the Fibonacci sequence up to 100.
+<?php
+$firstTerm = 0;
+$secondTerm = 1;
+echo "$firstTerm, $secondTerm";
+for ($i = 2; $i < 100; $i++) {
+    $nextTerm = $firstTerm + $secondTerm;
+    echo ", $nextTerm";
+    $firstTerm = $secondTerm;
+    $secondTerm = $nextTerm;
+}
+?>
+
+//Question 3: Power of Two. Write a program that takes an integer as input and returns true if the input is a power of two.
+//Examples: 8=> returns true 6=> returns false
+<?php
+function isPowerOfTwo($n) {
+    return ($n & ($n - 1)) == 0;
+}
+$number1 = 8;
+$number2 = 6;
+
+if (isPowerOfTwo($number1)) {
+    echo "$number1 => returns true\n";
+} else {
+    echo "$number1 => returns false\n";
+}
+
+if (isPowerOfTwo($number2)) {
+    echo "$number2 => returns true\n";
+} else {
+    echo "$number2 => returns false\n";
+}
+?>
+
+//Question 4: Capitalize Words
+//Write a program that accepts a string as input, capitalizes the first letter of each word in the string, and then returns the result string.
+//Examples:
+//"hi"=> returns "Hi" "i love programming"=> returns "I Love Programming"
+
+<?php
+function capitalizeWords($inputString) {
+    $result = ucwords($inputString);
+    return $result;
+}
+$input1 = "hi";
+$input2 = "i love programming";
+
+$output1 = capitalizeWords($input1);
+$output2 = capitalizeWords($input2);
+
+echo "\"$input1\" => returns \"$output1\"<br>";
+echo "\"$input2\" => returns \"$output2\"";
+?>
+
+//Question 5: Reverse Integer
+//Write a program that takes an integer as input and returns an integer with reversed digit ordering.
+//Examples: For input 500, the program should return 5. For input -56, the program should return -65.
+//For input -90, the program should return -9. For input 91, the program should return 19.
+<?php
+function reverseInteger($number) {
+    $reversed = 0;
+    $sign = ($number < 0) ? -1 : 1;
+    $number = abs($number);
+    while ($number > 0) {
+        $digit = $number % 10;
+        $reversed = ($reversed * 10) + $digit;
+        $number = (int)($number / 10);
+    }
+    $reversed *= $sign
+
+    return $reversed;
+}
+$input1 = 500;
+$input2 = -56;
+$input3 = -90;
+$input4 = 91;
+
+echo "Reversed of $input1: " . reverseInteger($input1) . "\n";
+echo "Reversed of $input2: " . reverseInteger($input2) . "\n";
+echo "Reversed of $input3: " . reverseInteger($input3) . "\n";
+echo "Reversed of $input4: " . reverseInteger($input4) . "\n";
+?>
+
+//Question 6: Count Vowels
+//Write a program that counts the number of vowels in a sentence. eg " Hello World " => returns 2
+<?php
+function countVowels($str) {
+    $str = strtolower($str); 
+    $vowelCount = 0;
+
+    for ($i = 0; $i < strlen($str); $i++) {
+        if (in_array($str[$i], ["a", "e", "i", "o", "u"])) {
+            $vowelCount++;
+        }
+    }
+
+    return $vowelCount;
+}
+
+$sentence = "Hello World";
+echo "Number of vowels: " . countVowels($sentence);
+?>
